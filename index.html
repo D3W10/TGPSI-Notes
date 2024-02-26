@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="TGPSI Notes, as suas notas na palma da mão!">
+        <meta name="author" content="D3W10">
+        <meta name="keywords" content="TGPSI Notes">
+        <link rel="stylesheet" href="./assets/style.css">
+        <link rel="icon" href="./assets/favicon.png">
+        <title>TGPSI Notes</title>
+    </head>
+    <body>
+        <div id="main">
+            <div id="flexSide">
+                <div id="sidePanel">
+                    <div id="homePanel" style="display: block; opacity: 1;">
+                        <a id="returnImg">
+                            <img src="./assets/icons/return.svg">
+                        </a>
+                        <a href="https://tgpsi-apps.netlify.app">
+                            <img id="homeImg" src="./assets/TGPSINotes.png">
+                        </a>
+                        <h1>TGPSI Notes</h1>
+                        <p>Bem-vindo ao TGPSI Notes</p>
+                        <button id="openCreateButton">Criar</button>
+                        <button id="openOpenButton">Abrir</button>
+                    </div>
+                    <div id="createPanel" style="display: none; opacity: 0;">
+                        <h2>Criar</h2>
+                        <p>Insira um nome para o seu ficheiro:</p>
+                        <input id="fileName" type="text" placeholder="Nome do Ficheiro" spellcheck="false" autocomplete="off">
+                        <p id="createError" style="visibility: hidden;">null</p>
+                        <div class="sideFooter">
+                            <a id="footerBackC">
+                                <img class="footerBackIcon" src="./assets/icons/back.svg">
+                                Voltar
+                            </a>
+                            <div class="sideFooterBtn">
+                                <button id="filesCreate" type="submit" onclick="FileCreate()" disabled>Criar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="openPanel" style="display: none; opacity: 0;">
+                        <!--  !! !! !!  -->
+                        <h2>Abrir</h2>
+                        <p>Selecione o ficheiro a abrir:</p>
+                        <div id="filesInputBox" ondragover="dragAndDrop(event, 'over');" ondragleave="dragAndDrop(event, 'leave');" ondrop="dragAndDrop(event, 'drop');">
+                            <div id="filesDiv" style="display: flex; justify-content: center; align-items: center;">
+                                <div id="filesText">
+                                    <span id="filesChoose">Escolher ficheiro</span>
+                                    <br>
+                                    <span id="filesDrop">Ou arraste para aqui!</span>
+                                </div>
+                            </div>
+                            <div id="sendProgress">
+                                <div id="sendProgressBar" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        <input id="filesInput" type="file" onchange="FilePrepare(event, 0)">
+                        <p>Ou insira o código TGPSI Share:</p>
+                        <input id="--------------------------" type="text">
+                        <div class="sideFooter">
+                            <a id="footerBackA">
+                                <img class="footerBackIcon" src="./assets/icons/back.svg">
+                                Voltar
+                            </a>
+                            <div class="sideFooterBtn">
+                                <button id="filesSend" type="submit" onclick="FileSend()" disabled>Abrir</button>
+                            </div>
+                        </div>
+                        <!--  !! !! !!  -->
+                    </div>
+                </div>
+            </div>
+            <div id="editor" style="display: none; opacity: 0;">
+                <div id="editorHeader">
+                    <!-- contenteditable="true" -->
+                    <div id="editorHeaderLeft">
+                        <img id="editorLogo" src="./assets/TGPSIInline.png">
+                        <span class="headerOptF selected">Ficheiro</span>
+                        <span class="headerOpt">--</span>
+                        <span class="headerOpt">----</span>
+                        <span class="headerOpt">---</span>
+                    </div>
+                    <div id="editorHeaderRight">
+                        <img id="editorShare" src="./assets/icons/editor/light/share.svg">
+                    </div>
+                </div>
+                <div id="editorBody"></div>
+            </div>
+        </div>
+        <script src="./assets/js/send.js"></script>
+        <script src="./assets/js/receive.js"></script>
+        <script src="./assets/prepare.js"></script>
+        <script src="./assets/home.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    </body>
+</html>
